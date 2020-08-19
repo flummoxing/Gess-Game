@@ -133,3 +133,39 @@ class Board:
                     else:
                         print('B', end=' | ')
             print()
+
+class BoardMixedUp(Board):
+    """
+    Identical to Board except initializes to different starting layouts, for testing purposes.
+
+    Here the white and black pieces are all mixed up. 
+    Used for testing if Piece effectively determines its legality.
+    There are no rings here, so used for testing the hasRing function too.
+    
+    """
+
+    def fillStartingLayout(self):
+        """
+        Populates Board with game pieces in their starting layout. Black pieces are represented by 'B', white pieces by 'W'
+        """
+
+        layout = [[None for i in range(self._height)] for j in range(self._width)]
+
+        # Describes column locations of stones in a given row.
+        # "First row" denotes player's first row of pieces--those closest to them.
+        firstAndThirdRow = [2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17]
+        secondRow = [1, 2, 3, 5, 7, 8, 9, 10, 12, 14, 16, 17, 18]
+        fourthRow = [2, 5, 8, 11, 14, 17]
+
+        # Here, rows 2 and 17 are swapped, so stones are jumbled and there's no valid ring
+        whiteStones = {18: firstAndThirdRow, 2: secondRow, 16: firstAndThirdRow, 13: fourthRow}
+        blackStones = {1: firstAndThirdRow, 17: secondRow,  3: firstAndThirdRow, 6: fourthRow}
+
+        for row in whiteStones:
+            for column in whiteStones[row]:
+                layout[row][column] = 'W'
+        for row in blackStones:
+            for column in blackStones[row]:
+                layout[row][column] = 'B'     
+
+        return layout       
