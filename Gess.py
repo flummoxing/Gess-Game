@@ -7,7 +7,7 @@ from stone import *
 from stoneCollection import StoneCollection
 from piece import Piece
 from move import Move
-from board import *
+from board import Board
 
 class GessGame:
     """
@@ -143,7 +143,7 @@ class GessGame:
         if not self.is_input_coordinate_valid(coordinate):
             return False
 
-        return (int(coordinate[1:]), COL_LETTERS.index(coordinate[0]))
+        return (int(coordinate[1:]), COL_LETTERS.index(coordinate[0].lower()))
 
     def is_game_over(self):
         """Returns True if game state is anything but unfinished."""
@@ -159,7 +159,6 @@ class GessGame:
         """Runs the game in the terminal. """
 
         while self._gameState == "UNFINISHED":
-            print("Current game state: ", self.get_game_state())
             print("Current player: ", self._currentPlayer)
             userInput = input("Enter origin center or press R to resign or Q to quit: ")
             if userInput == 'R':
@@ -173,14 +172,10 @@ class GessGame:
                 dest = input("Enter destination: ")
                 if not(self.make_move(origin, dest)):
                     print("\n Invalid move. Try again")
-                print()
-                self._gameBoard.display()
+                else:
+                    print()
+                    self._gameBoard.display()
         print("Result: ", self.get_game_state())
-
-def get_displacement(origin, destination):
-    """Returns a tuple with the row and column displacement between origin and destination."""
-
-    return (destination[0] - origin[0], destination[1] - origin[1])
 
 def main():
     game = GessGame()

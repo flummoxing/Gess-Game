@@ -1,3 +1,18 @@
+BOARD_SIZE = 20
+# Columns designated with these letters. None aligns to 1-indexing
+COL_LETTERS = [None, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+               'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't']
+# Outermost edges of 20x20 board
+OUTER_LOWER_BOUND = 1
+OUTER_UPPER_BOUND = BOARD_SIZE
+# Actual gameplay area is the 18x18 square within the complete board
+INNER_LOWER_BOUND = 2
+INNER_UPPER_BOUND = BOARD_SIZE - 1
+
+COUNT_FOR_RING = 8
+
+OPPONENT = {"WHITE": "BLACK", "BLACK": "WHITE"}
+
 class Stone:
     """
     Represents one of the 43 stones belonging to a player in Gess. Can be hidden to allow Move to perform tests without

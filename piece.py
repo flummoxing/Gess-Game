@@ -1,4 +1,4 @@
-from stone import Stone
+from stone import *
 from stoneCollection import StoneCollection
 
 class Piece:
@@ -128,3 +128,8 @@ class Piece:
         for stone in self._stoneList:
             stone.reveal()
             stone.move(displ[0], displ[1])
+
+def get_displacement(origin, destination):
+    """Returns a tuple with the row and column displacement between origin and destination."""
+
+    return (destination[0] - origin[0], destination[1] - origin[1])

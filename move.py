@@ -1,5 +1,5 @@
 from piece import Piece
-from stone import Stone
+from stone import *
 from stoneCollection import StoneCollection
 
 class Move:

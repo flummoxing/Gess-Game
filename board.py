@@ -1,22 +1,7 @@
-from stone import Stone
+from stone import *
 from stoneCollection import StoneCollection
 from piece import Piece
 from move import Move
-
-BOARD_SIZE = 20
-# Columns designated with these letters. None aligns to 1-indexing
-COL_LETTERS = [None, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-               'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't']
-# Outermost edges of 20x20 board
-OUTER_LOWER_BOUND = 1
-OUTER_UPPER_BOUND = BOARD_SIZE
-# Actual gameplay area is the 18x18 square within the complete board
-INNER_LOWER_BOUND = 2
-INNER_UPPER_BOUND = BOARD_SIZE - 1
-
-COUNT_FOR_RING = 8
-
-OPPONENT = {"WHITE": "BLACK", "BLACK": "WHITE"}
 
 class Board:
     """
@@ -123,13 +108,14 @@ class Board:
     def display(self):
         """Displays board for debug purposes."""
 
-        # Print column #s along top
-        print('   ', end='')
+        # Print column letters along top
+        print('     ', end='')
         for i in range(1, 21):
-            if i < 10:
-                print("  " + str(i) + " ", end='')
-            else:
-                print(" " + str(i) + " ", end='')
+            print(COL_LETTERS[i], end="   ")
+            # if i < 10:
+            #     print("  " + str(i) + " ", end='')
+            # else:
+            #     print(" " + str(i) + " ", end='')
         print()
 
         for row in range(BOARD_SIZE, 0, -1):

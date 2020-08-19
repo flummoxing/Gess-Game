@@ -1,4 +1,4 @@
-from stone import Stone
+from stone import *
 
 class StoneCollection:
     """Represents a collection of stones."""
