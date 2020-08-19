@@ -5,4 +5,4 @@ Gess is an abstract board game, roughly a cross between chess and Go. Rules are 
 
 Portfolio Project for CS162 - Programming II.
 
-![Alt text](./screengrabs/GessGame1.png?raw=true "Title")
+![Alt text](./screengrabs/GessGrab1.png?raw=true "Title")
